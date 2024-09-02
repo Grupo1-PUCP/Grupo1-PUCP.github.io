@@ -53,47 +53,56 @@
             background-color: rgba(0, 51, 102, 0.8); /* Azul oscuro con transparencia */
             margin-top: 20px;
         }
+        
+        /* Efecto de desvanecimiento */
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Bienvenido al Portafolio del Grupo 1</h1>
+        <h1 class="fade-in">Bienvenido al Portafolio del Grupo 1</h1>
     </header>
 
     <nav>
-        <a href="#about">Sobre Nosotros</a>
-        <a href="#members">Integrantes del Grupo 1</a>
-        <a href="#project">Proyecto</a>
-        <a href="#contact">Contacto</a>
+        <a href="#about" class="fade-in">Sobre Nosotros</a>
+        <a href="#members" class="fade-in">Integrantes del Grupo 1</a>
+        <a href="#project" class="fade-in">Proyecto</a>
+        <a href="#contact" class="fade-in">Contacto</a>
     </nav>
 
     <section id="about">
-        <h2>Sobre Nosotros</h2>
-        <p>Somos un grupo de estudiantes de la diplomatura de estudio en Business Analytics en la PUCP con la propuesta de un caso de negocio asociado a una casa de apuestas.</p>
+        <h2 class="fade-in">Sobre Nosotros</h2>
+        <p class="fade-in">Somos un grupo de estudiantes de la diplomatura de estudio en Business Analytics en la PUCP con la propuesta de un caso de negocio asociado a una casa de apuestas.</p>
     </section>
 
     <section id="members">
-        <h2>Integrantes del Grupo 1</h2>
+        <h2 class="fade-in">Integrantes del Grupo 1</h2>
         <ul>
-            <li>Airton Molina</li>
-            <li>Víctor Vilcapoma</li>
-            <li>Gerardo Cabrera</li>
-            <li>Vladimir Jines</li>
-            <li>Oscar Pinedo</li>
-            <li>Ajem Vera</li>
+            <li class="fade-in">Airton Molina</li>
+            <li class="fade-in">Víctor Vilcapoma</li>
+            <li class="fade-in">Gerardo Cabrera</li>
+            <li class="fade-in">Vladimir Jines</li>
+            <li class="fade-in">Oscar Pinedo</li>
+            <li class="fade-in">Ajem Vera</li>
         </ul>
     </section>
 
     <section id="project">
-        <h2>Proyecto</h2>
-        <p><strong>Business Case Casa de Apuestas:</strong> Para el 30 de mayo de 2024, el INDICADOR MENSUAL PROMEDIO DE APUESTAS DEPORTIVAS ONLINE POR USUARIO PARA LA EMPRESA XYZ llegó a 4.5 (semáforo amarillo) de manera general en lo que va del año. Se plantea como objetivo que el valor de este indicador llegue a 5 para el 31 de diciembre de 2024 (semáforo verde). Para lograr este objetivo se plantea implementar una estrategia de upselling, en la que por apostar más veces, se les regale apuestas gratis.</p>
-        <p><strong>Detalle:</strong> Se propone realizar bonos por recargas, dando un monto de 100% adicional a inicios del mes (Máximo 50 soles de bono con un fondo promocional de 15,000 soles mensuales) y que solo podrá ser usado durante el mes obtenido y después de realizar 5 apuestas de monto mínimo de 20 soles en el mes anterior. El costo total de la estrategia sería de 105,000 soles en los 7 meses de la estrategia. Al cumplir con el objetivo, se estima que el monto apostado adicional sea 344,831 soles cada mes, logrando un monto apostado de 2,068,989 soles adicionales durante los primeros 6 meses.</p>
-        <p>Puedes ver el proyecto en GitHub <a href="https://github.com/Grupo1-PUCP/BUSINESS-CASE" target="_blank">aquí</a>.</p>
+        <h2 class="fade-in">Proyecto</h2>
+        <p class="fade-in"><strong>Business Case Casa de Apuestas:</strong> Para el 30 de mayo de 2024, el INDICADOR MENSUAL PROMEDIO DE APUESTAS DEPORTIVAS ONLINE POR USUARIO PARA LA EMPRESA XYZ llegó a 4.5 (semáforo amarillo) de manera general en lo que va del año. Se plantea como objetivo que el valor de este indicador llegue a 5 para el 31 de diciembre de 2024 (semáforo verde). Para lograr este objetivo se plantea implementar una estrategia de upselling, en la que por apostar más veces, se les regale apuestas gratis.</p>
+        <p class="fade-in"><strong>Detalle:</strong> Se propone realizar bonos por recargas, dando un monto de 100% adicional a inicios del mes (Máximo 50 soles de bono con un fondo promocional de 15,000 soles mensuales) y que solo podrá ser usado durante el mes obtenido y después de realizar 5 apuestas de monto mínimo de 20 soles en el mes anterior. El costo total de la estrategia sería de 105,000 soles en los 7 meses de la estrategia. Al cumplir con el objetivo, se estima que el monto apostado adicional sea 344,831 soles cada mes, logrando un monto apostado de 2,068,989 soles adicionales durante los primeros 6 meses.</p>
+        <p class="fade-in">Puedes ver el proyecto en GitHub <a href="https://github.com/Grupo1-PUCP/BUSINESS-CASE" target="_blank">aquí</a>.</p>
     </section>
 
     <section id="contact">
-        <h2>Contacto</h2>
-        <p>Oscar Pinedo - Líder de grupo - oscar.pinedoq@pucp.edu.pe</p>
+        <h2 class="fade-in">Contacto</h2>
+        <p class="fade-in">Oscar Pinedo - Líder de grupo - oscar.pinedoq@pucp.edu.pe</p>
     </section>
 
     <footer>
@@ -106,5 +115,27 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const elements = document.querySelectorAll('.fade-in');
+
+            function checkVisibility() {
+                const windowHeight = window.innerHeight;
+
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('visible');
+                    } else {
+                        element.classList.remove('visible');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', checkVisibility);
+            checkVisibility(); // Ejecutar al cargar la página
+        });
+    </script>
 </body>
 </html>
