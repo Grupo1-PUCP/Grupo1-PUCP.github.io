@@ -1,0 +1,96 @@
+/* Main Styles */
+body.fade-in {
+    opacity: 0;
+    animation: fadeIn ease 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity:0; }
+    100% { opacity:1; }
+}
+
+#wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 4em;
+}
+
+header#header {
+    text-align: center;
+    padding: 2em 0;
+}
+
+header#header h1 a {
+    font-size: 2.5em;
+    text-decoration: none;
+    color: #000;
+}
+
+.posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.posts article {
+    background: #f4f4f4;
+    border-radius: 8px;
+    margin-bottom: 2em;
+    padding: 2em;
+    flex-basis: calc(100% / 2 - 1em);
+}
+
+.actions.special {
+    text-align: center;
+}
+
+.actions .button {
+    background-color: #005599;
+    color: #fff;
+    padding: 0.75em 2em;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.actions .button:hover {
+    background-color: rgba(0, 85, 153, 0.8);
+}
+
+footer#footer {
+    text-align: center;
+    padding: 2em 0;
+    background: #333;
+    color: #fff;
+}
+
+footer#footer h3 {
+    color: #fff;
+}
+
+footer#footer ul.icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+footer#footer ul.icons li a {
+    color: #fff;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+footer#footer ul.icons li a:hover {
+    color: #00aced;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .posts article {
+        flex-basis: 100%;
+    }
+}
