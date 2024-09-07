@@ -73,6 +73,7 @@
         <a href="#about" class="fade-in">Sobre Nosotros</a>
         <a href="#members" class="fade-in">Integrantes del Grupo 1</a>
         <a href="#project" class="fade-in">Proyecto</a>
+        <a href="#business-case" class="fade-in">Business Case</a>
         <a href="#contact" class="fade-in">Contacto</a>
     </nav>
 
@@ -100,42 +101,70 @@
         <p class="fade-in">Puedes ver el proyecto en GitHub <a href="https://github.com/Grupo1-PUCP/BUSINESS-CASE" target="_blank">aquí</a>.</p>
     </section>
 
-    <section id="contact">
-        <h2 class="fade-in">Contacto</h2>
-        <p class="fade-in">Oscar Pinedo - Líder de grupo - oscar.pinedoq@pucp.edu.pe</p>
+    <section id="business-case">
+        <h2 class="fade-in">Business Case G1 - Casa de Apuestas</h2>
+
+        <h3 class="fade-in"><b>Nombre del proyecto e integrantes</b></h3>
+        <img src="https://github.com/Grupo1-PUCP/BUSINESS-CASE/blob/main/Pantalla%20Inicio.jpg" alt="Pantalla Inicio" class="fade-in">
+
+        <h3 class="fade-in"><b>Descripción del Caso de Negocio</b></h3>
+        <img src="https://github.com/Grupo1-PUCP/BUSINESS-CASE/blob/main/Pantalla%20Caso.jpg" alt="Pantalla Caso" class="fade-in">
+
+        <h3 class="fade-in"><b>Explicación del Indicador Principal</b></h3>
+        <img src="https://github.com/Grupo1-PUCP/BUSINESS-CASE/blob/main/Pantalla%20Indicadores.jpg" alt="Pantalla Indicadores" class="fade-in">
+
+        <h3 class="fade-in"><b>Indicador Principal: Cantidad Promedio de Apuestas por Persona</b></h3>
+        <img src="https://github.com/Grupo1-PUCP/BUSINESS-CASE/blob/main/Dashboard.jpg" alt="Dashboard" class="fade-in">
+
+        <!-- Preguntas del Business Case -->
+        <h3 class="fade-in"><b>Pregunta 1</b></h3>
+        <p class="fade-in">Esta pregunta busca darle un seguimiento mensual para la cantidad promedio de apuestas por persona.</p>
+        <img src="https://github.com/Grupo1-PUCP/BUSINESS-CASE/blob/main/Pregunta1.jpg" alt="Pregunta 1" class="fade-in">
+
+        <h3 class="fade-in"><b>Pregunta 2</b></h3>
+        <p class="fade-in">Esta pregunta busca encontrar una estacionalidad en el día de la semana para la cantidad promedio de apuestas por persona.</p>
+        <img src="https://github.com/Grupo1-PUCP/BUSINESS-CASE/blob/main/Pregunta2.jpg" alt="Pregunta 2" class="fade-in">
+
+        <h3 class="fade-in"><b>Pregunta 3</b></h3>
+        <p class="fade-in">Esta pregunta busca encontrar los deportes con mayor relevancia para la cantidad promedio de apuestas por persona.</p>
+        <img src="https://github.com/Grupo1-PUCP/BUSINESS-CASE/blob/main/Pregunta3.jpg" alt="Pregunta 3" class="fade-in">
+
+        <h3 class="fade-in"><b>Pregunta 4</b></h3>
+        <p class="fade-in">Esta pregunta busca encontrar el género que tiene una mayor cantidad promedio de apuestas por persona.</p>
+        <img src="https://github.com/Grupo1-PUCP/BUSINESS-CASE/blob/main/Pregunta4.jpg" alt="Pregunta 4" class="fade-in">
+
+        <h3 class="fade-in"><b>Pregunta 5</b></h3>
+        <p class="fade-in">Esta pregunta busca encontrar el rango de edad que tiene una mayor cantidad promedio de apuestas por persona.</p>
+        <img src="https://github.com/Grupo1-PUCP/BUSINESS-CASE/blob/main/Pregunta5.jpg" alt="Pregunta 5" class="fade-in">
     </section>
 
     <footer>
-        <p>&copy; 2024 Grupo1 PUCP. Todos los derechos reservados.</p>
+        <p class="fade-in">Grupo 1 PUCP &copy; 2024. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!-- Scripts para el efecto de scroll y desvanecimiento -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const elements = document.querySelectorAll('.fade-in');
+        // Función para verificar si un elemento está visible en la ventana
+        function isVisible(el) {
+            const rect = el.getBoundingClientRect();
+            return rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
+        }
 
-            function checkVisibility() {
-                const windowHeight = window.innerHeight;
+        // Función para aplicar el efecto fade-in
+        function checkFadeIn() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => {
+                if (isVisible(el)) {
+                    el.classList.add('visible');
+                }
+            });
+        }
 
-                elements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
+        // Agregar evento de scroll para activar el fade-in
+        window.addEventListener('scroll', checkFadeIn);
 
-                    if (elementTop < windowHeight - 100) {
-                        element.classList.add('visible');
-                    } else {
-                        element.classList.remove('visible');
-                    }
-                });
-            }
-
-            window.addEventListener('scroll', checkVisibility);
-            checkVisibility(); // Ejecutar al cargar la página
-        });
+        // Verificar al cargar la página
+        document.addEventListener('DOMContentLoaded', checkFadeIn);
     </script>
 </body>
 </html>
