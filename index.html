@@ -54,6 +54,14 @@
             margin-top: 20px;
         }
         
+        /* Estilo para las imágenes */
+        section img {
+            max-width: 100%; /* Ajusta la imagen al contenedor */
+            height: auto; /* Mantiene la relación de aspecto */
+            border-radius: 8px; /* Opcional: Agrega bordes redondeados a las imágenes */
+            margin: 10px 0; /* Opcional: Espaciado superior e inferior */
+        }
+
         /* Efecto de desvanecimiento */
         .fade-in {
             opacity: 0;
@@ -61,14 +69,6 @@
         }
         .fade-in.visible {
             opacity: 1;
-        }
-        
-        /* Ajuste de imágenes */
-        .fade-in img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 0 auto;
         }
     </style>
 </head>
@@ -136,47 +136,54 @@
         <img src="https://raw.githubusercontent.com/Grupo1-PUCP/BUSINESS-CASE/main/Pregunta3.jpg" alt="Pregunta 3" class="fade-in">
         
         <h3 class="fade-in">Pregunta 4</h3>
-        <p class="fade-in">Esta pregunta busca encontrar el género que tiene una mayor cantidad promedio de apuestas por persona</p>
+        <p class="fade-in">Esta pregunta busca encontrar a los clientes con mayor cantidad de apuestas por persona</p>
         <img src="https://raw.githubusercontent.com/Grupo1-PUCP/BUSINESS-CASE/main/Pregunta4.jpg" alt="Pregunta 4" class="fade-in">
         
         <h3 class="fade-in">Pregunta 5</h3>
-        <p class="fade-in">Esta pregunta busca encontrar el rango de edad que tiene una mayor cantidad promedio de apuestas por persona</p>
+        <p class="fade-in">Esta pregunta busca encontrar el rendimiento de la estrategia en comparación con el historial de la empresa</p>
         <img src="https://raw.githubusercontent.com/Grupo1-PUCP/BUSINESS-CASE/main/Pregunta5.jpg" alt="Pregunta 5" class="fade-in">
         
         <h3 class="fade-in">Pregunta 6</h3>
-        <p class="fade-in">Esta pregunta busca analizar la información por canal de contacto y suscripción con la empresa</p>
+        <p class="fade-in">Esta pregunta busca revisar si hay alguna correlación con el monto de las apuestas realizadas</p>
         <img src="https://raw.githubusercontent.com/Grupo1-PUCP/BUSINESS-CASE/main/Pregunta6.jpg" alt="Pregunta 6" class="fade-in">
+        
+        <h3 class="fade-in">Pregunta 7</h3>
+        <p class="fade-in">Esta pregunta busca entender si el costo total de la estrategia es justificado en comparación con el aumento de apuestas</p>
+        <img src="https://raw.githubusercontent.com/Grupo1-PUCP/BUSINESS-CASE/main/Pregunta7.jpg" alt="Pregunta 7" class="fade-in">
+        
+        <h3 class="fade-in">Pregunta 8</h3>
+        <p class="fade-in">Esta pregunta busca evaluar el impacto de la estrategia en la satisfacción del cliente</p>
+        <img src="https://raw.githubusercontent.com/Grupo1-PUCP/BUSINESS-CASE/main/Pregunta8.jpg" alt="Pregunta 8" class="fade-in">
+        
+        <h3 class="fade-in">Pregunta 9</h3>
+        <p class="fade-in">Esta pregunta busca analizar si la estrategia afecta la frecuencia de apuestas por cliente</p>
+        <img src="https://raw.githubusercontent.com/Grupo1-PUCP/BUSINESS-CASE/main/Pregunta9.jpg" alt="Pregunta 9" class="fade-in">
+        
+        <h3 class="fade-in">Pregunta 10</h3>
+        <p class="fade-in">Esta pregunta busca determinar si la estrategia tiene un efecto positivo en el volumen de apuestas en eventos deportivos específicos</p>
+        <img src="https://raw.githubusercontent.com/Grupo1-PUCP/BUSINESS-CASE/main/Pregunta10.jpg" alt="Pregunta 10" class="fade-in">
     </section>
 
     <footer>
-        <p class="fade-in">© 2024 Grupo 1 - PUCP. Todos los derechos reservados.</p>
+        <p class="fade-in">© 2024 Grupo 1 PUCP. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- JavaScript para el efecto de desvanecimiento -->
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
     <script>
+        // Manejo del efecto de desvanecimiento
         document.addEventListener('DOMContentLoaded', function() {
             const fadeInElements = document.querySelectorAll('.fade-in');
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observerCallback = (entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
+            function checkFadeIn() {
+                fadeInElements.forEach(element => {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                        element.classList.add('visible');
                     }
                 });
-            };
-
-            const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-            fadeInElements.forEach(element => {
-                observer.observe(element);
-            });
+            }
+            window.addEventListener('scroll', checkFadeIn);
+            checkFadeIn(); // Inicializar la visibilidad en el primer carga
         });
     </script>
 </body>
